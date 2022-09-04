@@ -1,7 +1,31 @@
 const express = require('express')
-const app = express()
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
-})
-app.listen(process.env.PORT || 3000)
+const secure = require('ssl-express-www')
+const PORT = process.env.PORT || 8080;
+const morgan = require('morgan')
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
+
+var app = express();
+app.use(secure)
+app.use(morgan('dev'));
+app.use(express.static('client'));
+app.set("json spaces",2)
+__path = process.cwd()
+
+
+
+var cek = require('./cek.js');
+
+
+var main = require('./main');
+
+
+
+app.use('/cek', cek)
+app.use('/', main)
+
+
+app.listen(PORT, () => {
+    console.log(`Server urep mazeee neng port ${PORT}`)
+});
