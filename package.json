@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-   "devDependencies": {
+   "engines": {
     "node": "^16.17.0"
   },
   "scripts": {
